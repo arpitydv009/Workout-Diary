@@ -9,10 +9,22 @@ import SwiftUI
 
 struct newWorkout: View {
     var body: some View {
-        Text("New Workout Begins")
+        VStack{
+           
+            Button("Add Exercise +") {
+                Text("Hello")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.indigo) // Changes the background color of prominent buttons
+            .controlSize(.large)
+            .frame(width: 250  ,height: 50 ,alignment:.top )
+            .font(Font.system(size: 25))
+            
+        }
     }
 }
 
+
 #Preview {
-    newWorkout()
+    ContentView()
 }
