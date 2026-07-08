@@ -9,10 +9,12 @@ import SwiftUI
 
 struct Exercise_Chooser: View {
 
-    @State private var searched: String = ""
+    @State private var searchText: String = ""
+    private var list2 = Exercise_List.list1
+    
     var body: some View {
 
-        TextField("Search", text: $searched)
+      /*  TextField("Search 🔍", text: $searched)
             .frame(width: 350, height: 25, alignment: .top)
             .padding()
             // .border(Color.yellow)
@@ -21,34 +23,62 @@ struct Exercise_Chooser: View {
             .fontDesign(Font.Design.monospaced)
             .italic(true)
             .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
-        List {
+        */
+        
+          Text("Exercises")
+             // .padding()
+              .italic(true)
+              .font(Font.system(size: 35))
+              .fontDesign(Font.Design.monospaced)
+              .offset(x: -80, y:30)
 
-            /* ForEach(EList) { EList in
-                 Button(EList.exercise, systemImage: "42.circle") {}
-             }*/
+        NavigationStack {
+            List(filteredlist, id: \.self) { name in
+                
+                Button(name, systemImage: "dumbbell") {}
+                    .font(Font.system(size: 25))
 
-            ForEach(Exercise_List.list1.indices) { a in
-                Button(Exercise_List.list1[a], systemImage: "42.circle") {}
+                
+                
+                   // .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
+                   // .frame(alignment: .topLeading)
+                
+                
+               /* ForEach(filteredlist.indices) { a in
+                    Button(filteredlist[a], systemImage: "dumbbell") {}
+                        .font(Font.system(size: 25))
+                    
+                }*/
+            }
+        }
+        .navigationTitle("Exercises")
+        .searchable(text: $searchText,placement: .navigationBarDrawer , prompt: "Search")
+        .foregroundStyle(Color.white)
+        .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
 
+    }
+
+        
+    var filteredlist: [String]{
+        if searchText.isEmpty{
+            list2
+        } else{
+            list2.filter{name in
+                name.localizedCaseInsensitiveContains(searchText)
+            
             }
         }
     }
+    
+    
+    
+    }
+    
+    
+    
+    
 
-    /* public let EList: [ExList] = [
-         ExList(exercise: "Large Title"),
-         ExList(exercise: "Title"),
-         ExList(exercise: "Headline"),
-         ExList(exercise: "Body"),
-         ExList(exercise: "Caption")
-     ]*/
 
-    /*public struct ExList: Identifiable {
-        let exercise: String
-        public var id: String { exercise }
-
-    }*/
-
-}
 
 #Preview {
     Exercise_Chooser()
