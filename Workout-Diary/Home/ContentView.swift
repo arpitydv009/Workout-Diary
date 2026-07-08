@@ -75,6 +75,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    LauncherView()
         .preferredColorScheme(.dark)
 }

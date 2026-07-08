@@ -27,5 +27,5 @@ struct HistoryView: View {
 }
 
 #Preview {
-    ContentView()
+    LauncherView()
 }

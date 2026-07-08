@@ -10,83 +10,55 @@ import SwiftUI
 struct Exercise_Chooser: View {
 
     @State private var searchText: String = ""
-    private var list2 = Exercise_List.list1
+  //  private var list2 = Exercise_List.list1
+   // public static var ex_name:String = "ex_namee"
+    @Environment(\.dismiss) private var dismiss
     
+    @Binding var list_added: [String]
+    
+    var filteredlist: [String] {
+        if searchText.isEmpty {
+            Exercise_List.list1
+        } else {
+            Exercise_List.list1.filter { name in
+                name.localizedCaseInsensitiveContains(searchText)
+
+            }
+        }
+    }
+
     var body: some View {
 
-      /*  TextField("Search 🔍", text: $searched)
-            .frame(width: 350, height: 25, alignment: .top)
-            .padding()
-            // .border(Color.yellow)
-            // .backgroundExtensionEffect()
-            .font(Font.system(size: 25))
-            .fontDesign(Font.Design.monospaced)
+        Text("Exercises")
             .italic(true)
-            .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
-        */
-        
-          Text("Exercises")
-             // .padding()
-              .italic(true)
-              .font(Font.system(size: 35))
-              .fontDesign(Font.Design.monospaced)
-              .offset(x: -80, y:30)
+            .font(Font.system(size: 35))
+            .fontDesign(Font.Design.monospaced)
+            .offset(x: -80, y: 30)
 
         NavigationStack {
             List(filteredlist, id: \.self) { name in
-                
-                Button(name, systemImage: "dumbbell") {
-                    
-                    
-                    
-                    
-                    
-                }
-                    .font(Font.system(size: 25))
 
+                Button(name, systemImage: "dumbbell") {
+                    dismiss()
+                     list_added.append(name)
+                   // Exercise_Adder()
+                }
                 
-                
-                   // .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
-                   // .frame(alignment: .topLeading)
-                
-                
-               /* ForEach(filteredlist.indices) { a in
-                    Button(filteredlist[a], systemImage: "dumbbell") {}
-                        .font(Font.system(size: 25))
-                    
-                }*/
+                .font(Font.system(size: 25))
             }
         }
-        .navigationTitle("Exercises")
-        .searchable(text: $searchText,placement: .navigationBarDrawer , prompt: "Search")
-        .foregroundStyle(Color.white)
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer,
+            prompt: "Search"
+        )
+        .foregroundStyle(Color.indigo)
         .background(Color.gray, in: RoundedRectangle(cornerRadius: 25))
 
     }
-
-        
-    var filteredlist: [String]{
-        if searchText.isEmpty{
-            list2
-        } else{
-            list2.filter{name in
-                name.localizedCaseInsensitiveContains(searchText)
-            
-            }
-        }
-    }
-    
-    
-    
-    }
-    
-    
-    
-    
-
-
-
-#Preview {
-    Exercise_Chooser()
-        .preferredColorScheme(.dark)
 }
+
+/*#Preview {
+    Exercise_Chooser(list_added: $list_added)
+        .preferredColorScheme(.dark)
+}*/

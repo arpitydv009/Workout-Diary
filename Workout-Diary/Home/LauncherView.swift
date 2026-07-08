@@ -28,7 +28,10 @@ struct LauncherView: View {
                 newWorkout()
             }
 
-        }    }
+        }
+        .preferredColorScheme(.dark)
+    }
+        
 }
 
 #Preview {
