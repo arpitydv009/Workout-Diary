@@ -34,13 +34,10 @@ struct ContentView: View {
         .frame(width: 300, height: 200, alignment: .top)
         .offset(x: 0, y: -30)
         .padding()
-
-        ScrollView {
+        
+      /*  ScrollView {
             NavigationView {
-                HStack {
                     VStack {
-
-                        /*VStack {
                              NavigationLink(destination: newWorkout()) {
                                  Text("New Workout Starter")
                                      .padding()
@@ -69,36 +66,15 @@ struct ContentView: View {
                                      )
                              }
 
-
-
-                         }*/
-
                     }
                     .padding()
                     .preferredColorScheme(.dark)
-                }
-
             }
-        }
-
-        TabView(selection: $selectedtab) {
-            Tab("History", systemImage: "text.page", value: 0) {
-                HistoryView()
-            }
-            
-            Tab("Home", systemImage: "house.fill", value: 1) {
-                //Workout_DiaryApp()
-            }
-
-            Tab("New Workout", systemImage: "dumbbell", value: 2) {
-                //  AccountView()
-                newWorkout()
-            }
-
-        }
+        } */
     }
 }
 
 #Preview {
     ContentView()
+        .preferredColorScheme(.dark)
 }

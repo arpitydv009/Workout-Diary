@@ -35,7 +35,13 @@ struct Exercise_Chooser: View {
         NavigationStack {
             List(filteredlist, id: \.self) { name in
                 
-                Button(name, systemImage: "dumbbell") {}
+                Button(name, systemImage: "dumbbell") {
+                    
+                    
+                    
+                    
+                    
+                }
                     .font(Font.system(size: 25))
 
                 
