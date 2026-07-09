@@ -10,8 +10,7 @@ import SwiftUI
 struct Exercise_Chooser: View {
 
     @State private var searchText: String = ""
-  //  private var list2 = Exercise_List.list1
-   // public static var ex_name:String = "ex_namee"
+    
     @Environment(\.dismiss) private var dismiss
     
     @Binding var list_added: [String]
@@ -58,7 +57,7 @@ struct Exercise_Chooser: View {
     }
 }
 
-/*#Preview {
-    Exercise_Chooser(list_added: $list_added)
+#Preview {
+    LauncherView()
         .preferredColorScheme(.dark)
-}*/
+}

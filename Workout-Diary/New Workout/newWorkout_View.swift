@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct newWorkout: View {
+struct newWorkout_View: View {
     @State private var isPresented:Bool = false
     @State private var list_added: [String] = ["Exercise"]
-
+    
     var body: some View {
         
             VStack {
@@ -19,26 +19,23 @@ struct newWorkout: View {
                     Button("Add Exercise +") {
                         isPresented.toggle()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.indigo) // Changes the background color of prominent buttons
-                    .controlSize(.large)
-                    .frame(width: 250  ,height: 50 ,alignment:.center )
+                    .buttonStyle(.glass)
+                    .tint(.indigo)
+                    .frame(alignment:.center )
                     .font(Font.system(size: 25))
                     .sheet(isPresented: $isPresented){
                         Exercise_Chooser(list_added: $list_added)
                     }
                     
                 }
-              //  Text("Hello")
-
                 
                 /*List(list_added, id: \.self) { name in
                     Text("Hello")
                     Text(name)
                     .font(Font.system(size: 25))
-                }*/
+                }
                 
-               /* ForEach(list_added.indices) { a in
+                ForEach(list_added.indices) { a in
                     Text(list_added[a])
                         .font(Font.system(size: 25))
                         .padding()
@@ -50,11 +47,19 @@ struct newWorkout: View {
                     
                     if(name == "Exercise"){
                         Text(name)
-                            .font(Font.system(size: 35))
+                            .font(Font.system(size: 39))
                             .fontDesign(Font.Design.monospaced)
+                            .padding()
+                           
 
                     }else{
-                        Text(name) // 3. Define the row layout
+                        Text(name)
+                            .font(Font.system(size: 35))
+                            .fontDesign(Font.Design.rounded)
+
+                        VStack {
+                            Exercise_Controller()
+                        }
 
                     }
                        }
@@ -63,8 +68,6 @@ struct newWorkout: View {
                 
                 
             }
-        
-        
         
     }
     
@@ -77,6 +80,6 @@ struct newWorkout: View {
 
 #Preview {
     //LauncherView()
-    newWorkout()
+    newWorkout_View()
         .preferredColorScheme(.dark)
 }

@@ -13,7 +13,7 @@ struct FutureUI: View {
         NavigationStack {
             HStack {
 
-                NavigationLink(destination: newWorkout()) {
+                NavigationLink(destination: newWorkout_View()) {
 
                     Image(systemName: "dumbbell")
                         .resizable()
