@@ -12,8 +12,9 @@ struct setAdder_View: View {
     @Binding var set_weight: Int
     @Binding var set_reps: Int
     @Binding var set_list: [String]
-    @Binding var SET_REPS: [Int]
+    @Binding var SET_LIST: [set_Model]
 
+ //   private var index = SET_LIST.count
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -79,6 +80,15 @@ struct setAdder_View: View {
             }
             
             Button("Save", systemImage: "dumbbell") {
+                
+              /*  SET_LIST[SET_LIST.count].reps = set_reps
+                SET_LIST[SET_LIST.count].weight = set_weight */
+                
+                SET_LIST.append(set_Model(set: SET_LIST.count+1, weight: set_weight, reps: set_reps))
+                
+               /* SET_LIST[0].changeReps(newReps: set_reps)
+                SET_LIST[0].changeWeight(newWeight: set_weight)*/
+                
                 set_list.append("\(set_list.count)")
                 dismiss()
             }
