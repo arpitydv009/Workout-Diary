@@ -11,8 +11,11 @@ struct setAdder_View: View {
 
     @Binding var set_weight: Int
     @Binding var set_reps: Int
-    @Environment(\.dismiss) private var dismiss
+    @Binding var set_list: [String]
+    @Binding var SET_REPS: [Int]
 
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         
         
@@ -21,7 +24,6 @@ struct setAdder_View: View {
             .font(Font.system(size: 45, design: Font.Design.monospaced))
             .padding()
             .offset(x: -50)
-          //  .background(Color.gray, in: RoundedRectangle(cornerRadius: 30))
 
         VStack {
             HStack {
@@ -77,6 +79,7 @@ struct setAdder_View: View {
             }
             
             Button("Save", systemImage: "dumbbell") {
+                set_list.append("\(set_list.count)")
                 dismiss()
             }
             .font(Font.system(size: 30))
@@ -91,6 +94,6 @@ struct setAdder_View: View {
 }
 
 #Preview {
-    setAdder_View(set_weight: .constant(0), set_reps: .constant(0))
+    newWorkout_View()
         .preferredColorScheme(.dark)
 }
