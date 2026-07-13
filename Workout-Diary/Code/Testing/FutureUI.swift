@@ -27,7 +27,18 @@ struct FutureUI: View {
 
         }
 
-        .preferredColorScheme(.dark)
+        
+        
+        NavigationStack {
+            List {
+                Text("Hello")
+                Text("Hi")
+            }
+        }
+        .navigationTitle("Future")
+        .navigationBarItems(leading: EditButton())
+        .frame(height: 800)
+      //  .preferredColorScheme(.dark)
 
     }
 }

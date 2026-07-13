@@ -13,7 +13,7 @@ struct Exercise_Chooser: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @Binding var list_added: [String]
+    @Binding var exercise_list: [exercise_Model]
     
     var filteredlist: [String] {
         if searchText.isEmpty {
@@ -38,9 +38,9 @@ struct Exercise_Chooser: View {
             List(filteredlist, id: \.self) { name in
 
                 Button(name, systemImage: "dumbbell") {
+                    
                     dismiss()
-                     list_added.append(name)
-                   // Exercise_Adder()
+                    exercise_list.append(exercise_Model(exercise_number: exercise_list.count+1 , exercise_name: name))
                 }
                 
                 .font(Font.system(size: 25))

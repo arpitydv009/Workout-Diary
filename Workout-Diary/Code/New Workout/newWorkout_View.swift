@@ -9,22 +9,24 @@ import SwiftUI
 
 struct newWorkout_View: View {
     @State private var isPresented: Bool = false
-    @State private var list_added: [String] = ["Exercise"]
-    
+    @State private var exercise_list: [exercise_Model] = []
+
+
     var body: some View {
 
         VStack {
             VStack {
 
                 Button("Add Exercise +") {
+
                     isPresented.toggle()
                 }
                 .buttonStyle(.glass)
                 .tint(.indigo)
                 .frame(alignment: .center)
-                .font(Font.system(size: 25))
+                .font(Font.system(size: 20))
                 .sheet(isPresented: $isPresented) {
-                    Exercise_Chooser(list_added: $list_added)
+                    Exercise_Chooser(exercise_list: $exercise_list)
                 }
 
             }
@@ -43,33 +45,25 @@ struct newWorkout_View: View {
 
             }*/
 
-            List(list_added, id: \.self) { name in
+            List(exercise_list, id: \.exercise_number) { name in
 
-                if name == "Exercise" {
-                    Text(name)
-                        .font(Font.system(size: 39))
-                        .fontDesign(Font.Design.monospaced)
-                        .padding()
-
-                }
-                
-                else {
-                    
-                    GroupBox(
-                        label: Label(name, systemImage: "").font(
-                            Font.system(size: 35)
-                        )
-                        .fontDesign(Font.Design.rounded)
+                DisclosureGroup(
+                    "\(name.exercise_number)) " + name.exercise_name
+                ) {
+                    GroupBox(/*  label: Label(name, systemImage: "").font(
+                          Font.system(size: 25)
+                      )
+                      .fontDesign(Font.Design.rounded)*/
 
                     ) {
                         Exercise_Controller()
-                        
-                    }
-                    .frame(height:500)
+                            .frame(height: 300)
 
+                    }
                 }
+                .font(Font.system(size: 25))
+
             }
-           
 
         }
 

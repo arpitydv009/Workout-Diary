@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct LauncherView: View {
+    
     @State private var selectedtab = 1
+ 
 
+    
+    
     var body: some View {
         
         TabView(selection: $selectedtab) {
@@ -18,13 +22,11 @@ struct LauncherView: View {
             }
             
             Tab("Home", systemImage: "house.fill", value: 1) {
-                //Workout_DiaryApp()
                 ContentView()
                 
             }
 
             Tab("New Workout", systemImage: "dumbbell", value: 2) {
-                //  AccountView()
                 newWorkout_View()
             }
 

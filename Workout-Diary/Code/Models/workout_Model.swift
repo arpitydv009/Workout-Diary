@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+struct workout_Model{
+    var workout_exercise_list: [exercise_Model]
+    var date: Date
+    
+ 
+}

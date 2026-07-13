@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct exercise_Model {
+    
+    var exercise_number: Int
+    var exercise_name: String
+    
+}
