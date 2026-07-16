@@ -10,14 +10,11 @@ import SwiftUI
 struct Exercise_Chooser: View {
 
     @State private var searchText: String = ""
-    
+
     @Environment(\.dismiss) private var dismiss
-    
-    @Binding var exercise_list: [exercise_Model]
+
     @Bindable var workout: workoutModel
-    
-    
-    
+
     var filteredlist: [String] {
         if searchText.isEmpty {
             Exercise_List.list1
@@ -30,7 +27,7 @@ struct Exercise_Chooser: View {
     }
 
     var body: some View {
-        
+
         Text("\(workout.date.formatted(date: .long, time:.shortened))")
 
         Text("Exercises")
@@ -43,12 +40,16 @@ struct Exercise_Chooser: View {
             List(filteredlist, id: \.self) { name in
 
                 Button(name, systemImage: "dumbbell") {
-                    
+
                     dismiss()
-                    workout.exercise_array.append(exerciseModel(exercise_number: workout.exercise_array.count+1, exercise_name: name))
-                    exercise_list.append(exercise_Model(exercise_number: exercise_list.count+1 , exercise_name: name))
+                    workout.exercise_array.append(
+                        exerciseModel(
+                            exercise_number: workout.exercise_array.count + 1,
+                            exercise_name: name
+                        )
+                    )
                 }
-                
+
                 .font(Font.system(size: 25))
             }
         }

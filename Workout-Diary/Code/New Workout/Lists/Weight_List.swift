@@ -7,13 +7,12 @@
 
 import Foundation
 
-public struct Weight_List{
-    
-    
+public struct Weight_List {
+
     var weight: Int
-   public  static let weight_list: [Int] = [
+    public static let weight_list: [Int] = [
         11, 18, 25, 32, 39, 46, 53, 60, 67,
-        74, 81, 88, 95, 102, 109, 116, 123
+        74, 81, 88, 95, 102, 109, 116, 123,
     ]
-    
+
 }

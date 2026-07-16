@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Exercise_List{
+public struct Exercise_List {
     static let list1: [String] = [
         "Bench Press",
         "Incline Bench Press",
@@ -58,6 +58,6 @@ public struct Exercise_List{
         "Hanging Leg Raise",
         "Plank",
         "Russian Twist",
-        "Ab Wheel Rollout"
-        ]
+        "Ab Wheel Rollout",
+    ]
 }

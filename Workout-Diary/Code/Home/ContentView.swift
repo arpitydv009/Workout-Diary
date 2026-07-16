@@ -34,43 +34,43 @@ struct ContentView: View {
         .frame(width: 300, height: 200, alignment: .top)
         .offset(x: 0, y: -30)
         .padding()
-        
-      /*  ScrollView {
-            NavigationView {
-                    VStack {
-                             NavigationLink(destination: newWorkout()) {
-                                 Text("New Workout Starter")
-                                     .padding()
-                                     .frame(width: 400, height: 50)
-                                     .fontDesign(Font.Design.monospaced)
-                                     .font(Font.system(size: 25))
-                                     .foregroundStyle(Color.white)
-                                     .italic()
-                                     .background(
-                                         Color.mint,
-                                         in: RoundedRectangle(cornerRadius: 15)
-                                     )
-                             }
 
-                             NavigationLink(destination: HistoryView()) {
-                                 Text("History")
-                                     .padding()
-                                     .frame(width: 400, height: 50)
-                                     .fontDesign(Font.Design.monospaced)
-                                     .font(Font.system(size: 25))
-                                     .foregroundStyle(Color.white)
-                                     .italic()
-                                     .background(
-                                         Color.mint,
-                                         in: RoundedRectangle(cornerRadius: 15)
-                                     )
-                             }
+        /*  ScrollView {
+              NavigationView {
+                      VStack {
+                               NavigationLink(destination: newWorkout()) {
+                                   Text("New Workout Starter")
+                                       .padding()
+                                       .frame(width: 400, height: 50)
+                                       .fontDesign(Font.Design.monospaced)
+                                       .font(Font.system(size: 25))
+                                       .foregroundStyle(Color.white)
+                                       .italic()
+                                       .background(
+                                           Color.mint,
+                                           in: RoundedRectangle(cornerRadius: 15)
+                                       )
+                               }
 
-                    }
-                    .padding()
-                    .preferredColorScheme(.dark)
-            }
-        } */
+                               NavigationLink(destination: HistoryView()) {
+                                   Text("History")
+                                       .padding()
+                                       .frame(width: 400, height: 50)
+                                       .fontDesign(Font.Design.monospaced)
+                                       .font(Font.system(size: 25))
+                                       .foregroundStyle(Color.white)
+                                       .italic()
+                                       .background(
+                                           Color.mint,
+                                           in: RoundedRectangle(cornerRadius: 15)
+                                       )
+                               }
+
+                      }
+                      .padding()
+                      .preferredColorScheme(.dark)
+              }
+          } */
     }
 }
 

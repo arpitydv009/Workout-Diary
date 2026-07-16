@@ -9,13 +9,13 @@ import SwiftUI
 
 struct pastWorkoutView: View {
     @Bindable var workout: workoutModel
-    
+
     var body: some View {
-        
+
         List(workout.exercise_array, id: \.exercise_number) { name in
 
             DisclosureGroup("\(name.exercise_number)) " + name.exercise_name) {
-                GroupBox{
+                GroupBox {
                     pastSetViewer(exercise: name)
                         .frame(height: 300)
                 }

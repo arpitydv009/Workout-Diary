@@ -9,10 +9,10 @@ import Foundation
 import SwiftData
 
 @Model
-class workoutModel{
+class workoutModel {
     var date: Date
     var exercise_array = [exerciseModel]()
-    
+
     init(date: Date = .now) {
         self.date = date
     }

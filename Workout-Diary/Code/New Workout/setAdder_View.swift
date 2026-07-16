@@ -11,17 +11,13 @@ struct setAdder_View: View {
 
     @Binding var set_weight: Int
     @Binding var set_reps: Int
-    @Binding var set_list: [String]
-    @Binding var SET_LIST: [set_Model]
-    
+
     @Bindable var exercise: exerciseModel
 
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
-        
-        
-        
+
         Text("Log Data")
             .font(Font.system(size: 45, design: Font.Design.monospaced))
             .padding()
@@ -29,44 +25,47 @@ struct setAdder_View: View {
 
         VStack {
             HStack {
-                
+
                 Text("Weight: ")
                     .font(Font.system(size: 30))
                     .fontDesign(Font.Design.rounded)
                     .padding()
-                    .background(Color.gray, in: RoundedRectangle(cornerRadius: 30))
+                    .background(
+                        Color.gray,
+                        in: RoundedRectangle(cornerRadius: 30)
+                    )
 
-
-                
                 Picker(selection: $set_weight, label: Text("Picker")) {
-                    
+
                     ForEach(Weight_List.weight_list, id: \.self) { w in
                         Text("\(w)").tag(w)
                             .font(.headline)
                             .padding()
                             .foregroundStyle(Color.indigo)
-                        
 
                     }
                 }
                 .frame(width: 200)
                 .pickerStyle(.wheel)
                 .foregroundStyle(Color.white)
-                
+
             }
-            
+
             HStack {
-                
+
                 Text("Reps: ")
                     .font(Font.system(size: 30))
                     .fontDesign(Font.Design.rounded)
                     .padding()
-                  .background(Color.gray, in: RoundedRectangle(cornerRadius: 30))
-                
+                    .background(
+                        Color.gray,
+                        in: RoundedRectangle(cornerRadius: 30)
+                    )
+
                 Picker(selection: $set_reps, label: Text("Picker")) {
-                    
+
                     ForEach(Weight_List.weight_list, id: \.self) { w in
-                        
+
                         Text("\(w)").tag(w)
                             .font(.headline)
                             .padding()
@@ -76,21 +75,23 @@ struct setAdder_View: View {
                 }
                 .frame(width: 200)
                 .pickerStyle(.wheel)
-                
-                
+
             }
-            
+
             Button("Save", systemImage: "dumbbell") {
-                
-                SET_LIST.append(set_Model(set: SET_LIST.count, weight: set_weight, reps: set_reps))
-                
-                exercise.set_array.append(setModel(set: exercise.set_array.count+1, weight: set_weight, reps: set_reps))
-                
-                set_list.append("\(set_list.count)")
+
+                exercise.set_array.append(
+                    setModel(
+                        set: exercise.set_array.count + 1,
+                        weight: set_weight,
+                        reps: set_reps
+                    )
+                )
+
                 dismiss()
             }
             .font(Font.system(size: 30))
-            .frame(width: 500, height:50, alignment: .bottom)
+            .frame(width: 500, height: 50, alignment: .bottom)
             .fontDesign(Font.Design.rounded)
             .buttonStyle(.glass)
             .tint(.indigo)

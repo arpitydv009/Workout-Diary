@@ -10,20 +10,14 @@ import SwiftUI
 
 struct newWorkout_View: View {
 
-
     @State private var isPresented: Bool = false
-    @State private var exercise_list: [exercise_Model] = []
-    
+
     @Bindable var workout: workoutModel
 
-    
     var body: some View {
 
-        
-        
         VStack {
-            
-          //  Text("\(workout.date.formatted(date: .long, time:.shortened))")
+
             VStack {
                 Button("Add Exercise +") {
                     isPresented.toggle()
@@ -33,27 +27,17 @@ struct newWorkout_View: View {
                 .frame(alignment: .center)
                 .font(Font.system(size: 20))
                 .sheet(isPresented: $isPresented) {
-                    Exercise_Chooser(exercise_list: $exercise_list,workout: workout)
+                    Exercise_Chooser(workout: workout)
                 }
 
             }
 
-          /*  List(exercise_list, id: \.exercise_number) { name in
-
-                DisclosureGroup("\(name.exercise_number)) " + name.exercise_name) {
-                    GroupBox{
-                        Exercise_Controller()
-                            .frame(height: 300)
-                    }
-                }
-                .font(Font.system(size: 25))
-
-            }*/
-
             List(workout.exercise_array, id: \.exercise_number) { name in
 
-                DisclosureGroup("\(name.exercise_number)) " + name.exercise_name) {
-                    GroupBox{
+                DisclosureGroup(
+                    "\(name.exercise_number)) " + name.exercise_name
+                ) {
+                    GroupBox {
                         Exercise_Controller(workout: workout, exercise: name)
                             .frame(height: 300)
                     }
@@ -61,7 +45,7 @@ struct newWorkout_View: View {
                 .font(Font.system(size: 25))
 
             }
-            
+
         }
 
     }
@@ -69,7 +53,6 @@ struct newWorkout_View: View {
 }
 
 #Preview {
-    //LauncherView()
     let example = workoutModel()
     newWorkout_View(workout: example)
         .preferredColorScheme(.dark)

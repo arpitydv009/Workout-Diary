@@ -9,12 +9,12 @@ import Foundation
 import SwiftData
 
 @Model
-class setModel{
-    
+class setModel {
+
     var set: Int
-     var weight: Int
-     var reps: Int
-    
+    var weight: Int
+    var reps: Int
+
     init(set: Int = 1, weight: Int = 0, reps: Int = 0) {
         self.set = set
         self.weight = weight
