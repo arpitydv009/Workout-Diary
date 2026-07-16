@@ -14,6 +14,8 @@ struct setAdder_View: View {
     @Binding var set_list: [String]
     @Binding var SET_LIST: [set_Model]
     
+    @Bindable var exercise: exerciseModel
+
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -80,14 +82,9 @@ struct setAdder_View: View {
             
             Button("Save", systemImage: "dumbbell") {
                 
-              /*  SET_LIST[SET_LIST.count].reps = set_reps
-                SET_LIST[SET_LIST.count].weight = set_weight */
-                
                 SET_LIST.append(set_Model(set: SET_LIST.count, weight: set_weight, reps: set_reps))
                 
-                
-               /* SET_LIST[0].changeReps(newReps: set_reps)
-                SET_LIST[0].changeWeight(newWeight: set_weight)*/
+                exercise.set_array.append(setModel(set: exercise.set_array.count+1, weight: set_weight, reps: set_reps))
                 
                 set_list.append("\(set_list.count)")
                 dismiss()
@@ -104,6 +101,7 @@ struct setAdder_View: View {
 }
 
 #Preview {
-    newWorkout_View()
+    let example = workoutModel()
+    newWorkout_View(workout: example)
         .preferredColorScheme(.dark)
 }

@@ -15,14 +15,14 @@ struct Exercise_Controller: View {
     
     @State private var SET_LIST: [set_Model] = [set_Model(set: 0, weight: 0, reps: 0)]
     
-    
-    
+    @Bindable var workout: workoutModel
+    @Bindable var exercise: exerciseModel
+
     @State private var SET_REPS: [Int] = [11]
 
     
     var body: some View {
         
-        VStack{
             
           /*  HStack {
                 
@@ -74,7 +74,7 @@ struct Exercise_Controller: View {
                 
             }*/
             
-            List(SET_LIST, id: \.set) { name in
+           /* List(SET_LIST, id: \.set) { name in
 
                 if(name.set == 0){
                     HStack {
@@ -95,7 +95,7 @@ struct Exercise_Controller: View {
                         .frame(width: 100  ,height: 40)
                         .font(Font.system(size: 20))
                         .sheet(isPresented: $isPresented){
-                            setAdder_View(set_weight: $set_weight, set_reps: $set_reps, set_list: $set_list, SET_LIST: $SET_LIST)
+                            setAdder_View(set_weight: $set_weight, set_reps: $set_reps, set_list: $set_list, SET_LIST: $SET_LIST, exercise: exercise)
                         }
                     }
                 }
@@ -108,9 +108,39 @@ struct Exercise_Controller: View {
 
                 }
                
+            }*/
+        HStack {
+            
+            Text("Set")
+                .font(Font.system(size: 25))
+                .fontWeight(.bold)
+                .frame(width:100)
+                
+            Button("+") {
+                isPresented.toggle()
+               // SET_LIST.append(set_Model(set: 0, weight: 0, reps: 0))
+                
             }
-            
-            
+            .buttonStyle(.glass)
+            .tint(.indigo)
+            .controlSize(.large)
+            .frame(width: 100  ,height: 40)
+            .font(Font.system(size: 20))
+            .sheet(isPresented: $isPresented){
+                setAdder_View(set_weight: $set_weight, set_reps: $set_reps, set_list: $set_list, SET_LIST: $SET_LIST, exercise: exercise)
+            }
+        }
+        
+            List(exercise.set_array, id: \.set){ name in
+                
+                DisclosureGroup("Set: \(name.set)") {
+                    Text("Weight: \(name.weight)")
+                    Text("Reps: \(name.reps)")
+                }
+                
+            }
+           
+        
            /* ForEach(SET_LIST.indices) { a in
                 Text("Hello")
                 Text("Set: \(SET_LIST[a].set)")
@@ -123,7 +153,7 @@ struct Exercise_Controller: View {
               }*/
         
             
-            }
+            
             .font(Font.system(size: 25))
             .controlSize(.large)
             
@@ -134,6 +164,8 @@ struct Exercise_Controller: View {
 
 
 #Preview {
-    Exercise_Controller()
+    let example = workoutModel()
+    let ex2 = exerciseModel(exercise_number: 5, exercise_name: "Testing")
+    Exercise_Controller(workout: example, exercise: ex2)
         .preferredColorScheme(.dark)
 }

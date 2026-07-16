@@ -12,19 +12,19 @@ struct FutureUI: View {
 
         NavigationStack {
             HStack {
-
-                NavigationLink(destination: newWorkout_View()) {
-
-                    Image(systemName: "dumbbell")
-                        .resizable()
-                        .frame(width: 60, height: 40, alignment: .center)
-                        .padding(10)
-                        .background()
-                }
-                .frame(width: 400, height: 80, alignment: .bottom)
-                .background(Color.mint, in: RoundedRectangle(cornerRadius: 40))
+                
+                /*   NavigationLink(destination: newWorkout_View()) {
+                 
+                 Image(systemName: "dumbbell")
+                 .resizable()
+                 .frame(width: 60, height: 40, alignment: .center)
+                 .padding(10)
+                 .background()
+                 }
+                 .frame(width: 400, height: 80, alignment: .bottom)
+                 .background(Color.mint, in: RoundedRectangle(cornerRadius: 40))
+                 }*/
             }
-
         }
 
         

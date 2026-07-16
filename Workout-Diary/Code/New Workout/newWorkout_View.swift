@@ -5,20 +5,27 @@
 //  Created by arpit on 06/07/26.
 //
 
+import SwiftData
 import SwiftUI
 
 struct newWorkout_View: View {
+
+
     @State private var isPresented: Bool = false
     @State private var exercise_list: [exercise_Model] = []
+    
+    @Bindable var workout: workoutModel
 
-
+    
     var body: some View {
 
+        
+        
         VStack {
+            
+          //  Text("\(workout.date.formatted(date: .long, time:.shortened))")
             VStack {
-
                 Button("Add Exercise +") {
-
                     isPresented.toggle()
                 }
                 .buttonStyle(.glass)
@@ -26,45 +33,35 @@ struct newWorkout_View: View {
                 .frame(alignment: .center)
                 .font(Font.system(size: 20))
                 .sheet(isPresented: $isPresented) {
-                    Exercise_Chooser(exercise_list: $exercise_list)
+                    Exercise_Chooser(exercise_list: $exercise_list,workout: workout)
                 }
 
             }
 
-            /*List(list_added, id: \.self) { name in
-                Text("Hello")
-                Text(name)
-                .font(Font.system(size: 25))
-            }
+          /*  List(exercise_list, id: \.exercise_number) { name in
 
-            ForEach(list_added.indices) { a in
-                Text(list_added[a])
-                    .font(Font.system(size: 25))
-                    .padding()
-                Text("Hello")
+                DisclosureGroup("\(name.exercise_number)) " + name.exercise_name) {
+                    GroupBox{
+                        Exercise_Controller()
+                            .frame(height: 300)
+                    }
+                }
+                .font(Font.system(size: 25))
 
             }*/
 
-            List(exercise_list, id: \.exercise_number) { name in
+            List(workout.exercise_array, id: \.exercise_number) { name in
 
-                DisclosureGroup(
-                    "\(name.exercise_number)) " + name.exercise_name
-                ) {
-                    GroupBox(/*  label: Label(name, systemImage: "").font(
-                          Font.system(size: 25)
-                      )
-                      .fontDesign(Font.Design.rounded)*/
-
-                    ) {
-                        Exercise_Controller()
+                DisclosureGroup("\(name.exercise_number)) " + name.exercise_name) {
+                    GroupBox{
+                        Exercise_Controller(workout: workout, exercise: name)
                             .frame(height: 300)
-
                     }
                 }
                 .font(Font.system(size: 25))
 
             }
-
+            
         }
 
     }
@@ -73,6 +70,7 @@ struct newWorkout_View: View {
 
 #Preview {
     //LauncherView()
-    newWorkout_View()
+    let example = workoutModel()
+    newWorkout_View(workout: example)
         .preferredColorScheme(.dark)
 }
