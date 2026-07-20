@@ -52,17 +52,21 @@ struct newWorkout_View: View {
                     
                     DisclosureGroup(
                         "\(name.exercise_number)) " + name.exercise_name
-                    ) {
+                    )
+                    {
                         GroupBox {
                             Exercise_Controller(workout: workout, exercise: name)
-                                .frame(height: 300)
+                            
+                               // .frame(height: 300)
                         }
+                      
                     }
+                    .font(.title)
+                    .foregroundStyle(Color.cyan)
                     .font(Font.system(size: 25))
                     
                 }
                 .onDelete(perform: deleteExercise)
-               //
             }
             .font(Font.system(size: 25))
             .controlSize(.large)
