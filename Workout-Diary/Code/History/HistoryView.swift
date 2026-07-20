@@ -43,7 +43,7 @@ struct HistoryView: View {
                 destination: pastWorkoutView.init
             )
             .toolbar {
-                //  Button("Add", action: addDestination)
+               // Button("Add"){}
                 //  Button("",systemImage: "plus", action: addSamples)
             }
         }

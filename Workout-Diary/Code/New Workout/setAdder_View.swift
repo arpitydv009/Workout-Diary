@@ -64,7 +64,7 @@ struct setAdder_View: View {
 
                 Picker(selection: $set_reps, label: Text("Picker")) {
 
-                    ForEach(Weight_List.weight_list, id: \.self) { w in
+                    ForEach(Reps_List.reps_list, id: \.self) { w in
 
                         Text("\(w)").tag(w)
                             .font(.headline)
