@@ -32,7 +32,7 @@ struct newWorkout_View: View {
 
             }
 
-            List(workout.exercise_array, id: \.exercise_number) { name in
+         /*   List(workout.exercise_array, id: \.exercise_number) { name in
 
                 DisclosureGroup(
                     "\(name.exercise_number)) " + name.exercise_name
@@ -44,12 +44,43 @@ struct newWorkout_View: View {
                 }
                 .font(Font.system(size: 25))
 
+            }*/
+            
+            
+            List{
+                ForEach(workout.exercise_array) {  name in
+                    
+                    DisclosureGroup(
+                        "\(name.exercise_number)) " + name.exercise_name
+                    ) {
+                        GroupBox {
+                            Exercise_Controller(workout: workout, exercise: name)
+                                .frame(height: 300)
+                        }
+                    }
+                    .font(Font.system(size: 25))
+                    
+                }
+                .onDelete(perform: deleteExercise)
+               //
             }
+            .font(Font.system(size: 25))
+            .controlSize(.large)
 
+            
+            
         }
 
     }
 
+    
+    func deleteExercise(_ indexSet: IndexSet ){
+        
+        for index in indexSet{
+            workout.exercise_array.remove(at: index)
+        }
+    }
+    
 }
 
 #Preview {

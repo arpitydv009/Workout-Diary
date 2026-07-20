@@ -28,7 +28,7 @@ struct Exercise_Chooser: View {
 
     var body: some View {
 
-        Text("\(workout.date.formatted(date: .long, time:.shortened))")
+      //  Text("\(workout.date.formatted(date: .long, time:.shortened))")
 
         Text("Exercises")
             .italic(true)

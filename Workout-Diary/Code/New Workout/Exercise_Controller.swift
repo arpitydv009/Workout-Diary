@@ -58,15 +58,15 @@ struct Exercise_Controller: View {
         }
         .font(Font.system(size: 25))
         .controlSize(.large)
+        
+        
         }
         
     
     func deleteSet(_ indexSet: IndexSet ){
         
         for index in indexSet{
-           // let destination = exercise.set_array[index]
             exercise.set_array.remove(at: index)
-           // modelContext.delete(destination)
         }
     }
     
