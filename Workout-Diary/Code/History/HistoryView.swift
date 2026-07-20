@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
-import _SwiftData_SwiftUI
+import SwiftData
 
 struct HistoryView: View {
 
     @Query(sort: \workoutModel.date, order: .reverse) var workouts:
         [workoutModel]
     @State private var path = NavigationPath()
+    @Environment(\.modelContext) var modelContext
+
 
     var body: some View {
 
@@ -25,17 +27,17 @@ struct HistoryView: View {
                             Text(
                                 workout.date.formatted(
                                     date: .long,
-                                    time: .complete
+                                    time: .standard
                                 )
                             )
                             .font(.headline)
                         }
                     }
                 }
-                // .onDelete(perform: deleteDestination)
+                 .onDelete(perform: deleteWorkout)
 
             }
-            .navigationTitle("Data Saver")
+            .navigationTitle("History")
             .navigationDestination(
                 for: workoutModel.self,
                 destination: pastWorkoutView.init
@@ -46,6 +48,14 @@ struct HistoryView: View {
             }
         }
 
+    }
+    
+    func deleteWorkout(_ indexSet: IndexSet ){
+        
+        for index in indexSet{
+            let workout = workouts[index]
+            modelContext.delete(workout)
+        }
     }
 
 }
