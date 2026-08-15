@@ -1,4 +1,4 @@
-# Workout Diary 🏋️
+# Workout Diary 📔
 # Made by Arpit Yadav 
 A simple iOS workout tracker built with **SwiftUI** and **SwiftData**.
 
