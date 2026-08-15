@@ -57,7 +57,6 @@ struct newWorkout_View: View {
                         GroupBox {
                             Exercise_Controller(workout: workout, exercise: name)
                             
-                               // .frame(height: 300)
                         }
                       
                     }

@@ -20,7 +20,7 @@ struct newWorkoutLoader: View {
 
             Button(
                 "Start New Workout",
-                systemImage: "Plus",
+                systemImage: "plus.app",
                 action: newWorkoutAdder
             )
             .font(Font.system(size: 30))
@@ -28,6 +28,7 @@ struct newWorkoutLoader: View {
             .fontDesign(Font.Design.rounded)
             .buttonStyle(.glass)
             .tint(.indigo)
+            .offset(y:-200)
 
             .navigationDestination(for: workoutModel.self) { workout in
                 newWorkout_View(workout: workout)

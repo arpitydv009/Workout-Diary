@@ -28,7 +28,6 @@ struct LauncherView: View {
             Tab("New Workout", systemImage: "dumbbell", value: 2) {
 
                 newWorkoutLoader()
-                // newWorkout_View()
 
             }
 
